@@ -20,13 +20,27 @@
 Feature: Vaidating Place api functionalities
  
 
-  @tag1
-  Scenario: Verify if place is successfuly added using add place api
-    Given Add Place playload
-    When user calls "addplace" api with post call
+  @AddPlace @regression
+  Scenario Outline: Verify if place is successfuly added using add place api
+    Given Add Place playload with "<name>" "<language>" "<address>"
+    When user calls "AddPlaceApi" api with "post" call
     Then verify status code 200
     And verify "status" in response body is "OK"
     And verify "scope" in response body is "APP"
+    And verify place_Id created maps to "<name>" using "getPlaceApi"
+    
+    Examples:
+    |name|language|address|
+    |testTN|tamil|TamilNadu|
+    |testKA|kannada|Karnataka|
+    
+  @DeletePlace @regression
+  Scenario: Delete place created using delete call
+    Given delete place api with payload
+    When user calls "deletePlaceApi" api with "post" call
+    Then verify status code 200
+    And verify "status" in response body is "OK"
+  
 
   #@tag2
   #Scenario Outline: Title of your scenario outline

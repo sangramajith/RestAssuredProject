@@ -12,17 +12,21 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
 public class utils {
-
+	static RequestSpecification req;
 	public RequestSpecification requestSpec() throws IOException {
+		if(req==null) {
 		PrintStream log= new PrintStream(new FileOutputStream("logging.text"));
-		  RequestSpecification req= new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")).addQueryParam("key", "qaclick123")
+		   req= new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")).addQueryParam("key", "qaclick123")
 				  .addFilter(RequestLoggingFilter.logRequestTo(log))
 				  .addFilter(ResponseLoggingFilter.logResponseTo(log))
-				  .setContentType(ContentType.JSON).build();	
+				  .setContentType(ContentType.JSON).build();
+		   return req;
+		}
 		  return req;
 	}
 	public ResponseSpecification responseSpec() {
@@ -37,5 +41,9 @@ public class utils {
 		return prop.getProperty(key);
 		
 		
+	}
+	public String getresponseValue(String response,String value) {
+		JsonPath js=new JsonPath(response);
+		return js.getString(value);
 	}
 }

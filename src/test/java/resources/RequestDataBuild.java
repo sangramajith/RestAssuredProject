@@ -8,12 +8,12 @@ import pojoClasses.location;
 
 public class RequestDataBuild {
 
-	public static fullBody addPlaceData() {
+	public static fullBody addPlaceData(String name, String language, String address) {
 		  fullBody fb=new fullBody();
 		  fb.setAccuracy(50);
-		  fb.setName("testName");
-		  fb.setAddress("29, side layout, cohen 09");
-		  fb.setLanguage("Malayalam");
+		  fb.setName(name);
+		  fb.setAddress(address);
+		  fb.setLanguage(language);
 		  fb.setPhone_number("4568741236");
 		  fb.setWebsite("https://www.google.com");
 		  

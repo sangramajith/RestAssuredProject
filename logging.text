@@ -15,19 +15,19 @@ Body:
         "lng": 52.63,
         "lat": 91.33
     },
-    "address": "29, side layout, cohen 09",
+    "address": "TamilNadu",
     "phone_number": "4568741236",
-    "name": "testName",
+    "name": "testTN",
     "accuracy": 50,
     "website": "https://www.google.com",
-    "language": "Malayalam",
+    "language": "tamil",
     "types": [
         "Chemical",
         "petrol"
     ]
 }
 HTTP/1.1 200 OK
-Date: Sat, 20 Apr 2024 02:46:48 GMT
+Date: Mon, 22 Apr 2024 06:29:59 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -40,8 +40,161 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "38b46c4aab25107219bd62517f434d3f",
+    "place_id": "3942d8d5f6b7fe27976535c726493b88",
     "scope": "APP",
-    "reference": "12cc2206db110df23c149a9af83754bb12cc2206db110df23c149a9af83754bb",
-    "id": "12cc2206db110df23c149a9af83754bb"
+    "reference": "e1f76b24b41a2f88aab2e11aeb90a2a9e1f76b24b41a2f88aab2e11aeb90a2a9",
+    "id": "e1f76b24b41a2f88aab2e11aeb90a2a9"
+}
+Request method:	GET
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=3942d8d5f6b7fe27976535c726493b88
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+				place_id=3942d8d5f6b7fe27976535c726493b88
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Mon, 22 Apr 2024 06:29:59 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 217
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "location": {
+        "latitude": "91.33",
+        "longitude": "52.63"
+    },
+    "accuracy": "50",
+    "name": "testTN",
+    "phone_number": "4568741236",
+    "address": "TamilNadu",
+    "types": "Chemical,petrol",
+    "website": "https://www.google.com",
+    "language": "tamil"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "location": {
+        "lng": 52.63,
+        "lat": 91.33
+    },
+    "address": "Karnataka",
+    "phone_number": "4568741236",
+    "name": "testKA",
+    "accuracy": 50,
+    "website": "https://www.google.com",
+    "language": "kannada",
+    "types": [
+        "Chemical",
+        "petrol"
+    ]
+}
+HTTP/1.1 200 OK
+Date: Mon, 22 Apr 2024 06:30:01 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 194
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK",
+    "place_id": "0aed9ca53194bfa961d68efca8bbd9de",
+    "scope": "APP",
+    "reference": "5ffdbddee527d1cb2eaf0f96ab213b235ffdbddee527d1cb2eaf0f96ab213b23",
+    "id": "5ffdbddee527d1cb2eaf0f96ab213b23"
+}
+Request method:	GET
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=0aed9ca53194bfa961d68efca8bbd9de
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+				place_id=0aed9ca53194bfa961d68efca8bbd9de
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Mon, 22 Apr 2024 06:30:01 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 219
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "location": {
+        "latitude": "91.33",
+        "longitude": "52.63"
+    },
+    "accuracy": "50",
+    "name": "testKA",
+    "phone_number": "4568741236",
+    "address": "Karnataka",
+    "types": "Chemical,petrol",
+    "website": "https://www.google.com",
+    "language": "kannada"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "place_id": "0aed9ca53194bfa961d68efca8bbd9de"
+}
+HTTP/1.1 200 OK
+Date: Mon, 22 Apr 2024 06:30:03 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 15
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK"
 }

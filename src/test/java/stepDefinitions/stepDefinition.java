@@ -1,21 +1,15 @@
 package stepDefinitions;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import pojoClasses.deletePaylod;
 import resources.RequestDataBuild;
+import resources.apiResources;
 import resources.utils;
 
 import static org.junit.Assert.*;
@@ -25,21 +19,30 @@ public class stepDefinition extends utils {
 	 RequestSpecification res;
 	 ResponseSpecification resSpec;
 	 Response response;
-	  
-	@Given("Add Place playload")
-	public void add_place_playload() throws IOException {
+	 static String place_ID;
+	 @Given("Add Place playload with {string} {string} {string}")
+	 public void add_place_playload_with(String name, String language, String address) throws IOException {
 		  res=given().spec(requestSpec())
-				  .body(RequestDataBuild.addPlaceData()); 
+				  .body(RequestDataBuild.addPlaceData(name,language,address)); 
 	}
-	@When("user calls {string} api with post call")
-	public void user_calls_api_with_post_call(String string) {
+	@When("user calls {string} api with {string} call")
+	public void user_calls_api_with_post_call(String resource, String httpMethod) {
+		 apiResources resourceName=apiResources.valueOf(resource);
+		 if(httpMethod.equalsIgnoreCase("POST")) {
+			 response=res.when().post(resourceName.getResource());
+		 }
 		
-		 response=res.when().post("/maps/api/place/add/json")
-				  .then().spec(responseSpec()).extract().response();
+		 else if(httpMethod.equalsIgnoreCase("GET")) {
+			 response=res.when().get(resourceName.getResource());
+		 }
+		 else if(httpMethod.equalsIgnoreCase("DELETE")) {
+			 response=res.when().delete(resourceName.getResource());
+		 }
+				 
 	}
 	@Then("verify status code {int}")
 	public void verify_status_code(int statusCodeExpected) {
-	
+	    response= response.then().spec(responseSpec()).extract().response();
 		assertEquals(response.statusCode(),statusCodeExpected);
 		
 	}
@@ -49,6 +52,26 @@ public class stepDefinition extends utils {
 		 String status=js.getString(""+item+"");
 		 System.out.println(status);
 		 assertEquals(status,expectedValue);
+	}
+	@Then("verify place_Id created maps to {string} using {string}")
+	public void verify_place_id_created_maps_to_using(String field, String resource) throws IOException {
+	   
+		 place_ID=getresponseValue(response.asString(),"place_id");
+	     
+		 res=given().spec(requestSpec()).queryParam("place_id",place_ID);
+		 user_calls_api_with_post_call(resource,"GET");
+		 
+		 String nameFromResponse=getresponseValue(response.asString(),"name");
+		 assertEquals(nameFromResponse,field);
+		
+	}
+	@Given("delete place api with payload")
+	public void delete_place_api_with_payload() throws IOException {
+	
+		pojoClasses.deletePaylod dp=new deletePaylod();
+		dp.setplace_id(place_ID);
+	   
+	    res=given().spec(requestSpec()).body(dp);
 	}
 	
 }
